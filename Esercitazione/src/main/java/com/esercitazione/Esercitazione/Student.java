@@ -2,7 +2,7 @@ package com.esercitazione.Esercitazione;
 
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class Student {
 	private String fistName;
 	private String lastName;
