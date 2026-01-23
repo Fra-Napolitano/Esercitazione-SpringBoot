@@ -1,22 +1,18 @@
 package com.esercitazione.Esercitazione;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
-@Configuration
-@ComponentScan
-// stessa cosa di scrivere solo @SpringBootApplication
+import com.esercitazione.Esercitazione.lazy.NotAlwaysUsedBean;
+
+@SpringBootApplication
 public class EsercitazioneApplication {
 
 	public static void main(String[] args) {
-		AbstractApplicationContext ctx = new AnnotationConfigApplicationContext(EsercitazioneApplication.class);
-		
-		for(String beanName : ctx.getBeanDefinitionNames()) {
-			System.out.println("Bean ----> " + beanName);
-		}
-		ctx.close();
+		ApplicationContext ctx = SpringApplication.run(EsercitazioneApplication.class, args);
+		System.out.println("Chiamo il Bean NotAlwaysBean");
+		ctx.getBean(NotAlwaysUsedBean.class);
 	}
 
 }
